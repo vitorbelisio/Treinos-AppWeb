@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Treino Diário</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Meu Treino Diário</h1>
+    </header>
+
+    <nav class="sidebar">
+        <ul id="day-tabs" class="day-tabs">
+            </ul>
+    </nav>
+
+    <main class="content-area">
+        <section id="dashboard-view" class="active-view">
+            <h2>Bem-vindo!</h2>
+            <p>Selecione um dia da semana para visualizar ou gerenciar seus treinos.</p>
+        </section>
+
+        <section id="workout-day-view" class="hidden">
+            <h2 id="current-day-title"></h2>
+            <div class="workout-list-container">
+                <h3>Treinos do Dia</h3>
+                <ul id="current-day-workouts" class="workout-list">
+                    </ul>
+                <button id="add-workout-btn" class="add-btn">Adicionar Novo Treino</button>
+                <button id="start-workout-session-btn" class="start-btn">Iniciar Treino</button>
+            </div>
+
+            <div id="add-edit-workout-form" class="form-container hidden">
+                <h3>Adicionar/Editar Treino</h3>
+                <form id="workout-form">
+                    <input type="hidden" id="workout-id">
+                    <label for="exercise-name">Nome do Exercício:</label>
+                    <input type="text" id="exercise-name" required>
+
+                    <label for="muscle-type">Tipo de Músculo/Exercício:</label>
+                    <select id="muscle-type">
+                        <option value="">Selecione um tipo</option>
+                        <option value="Braços">Braços</option>
+                        <option value="Pernas">Pernas</option>
+                        <option value="Costas">Costas</option>
+                        <option value="Peitoral">Peitoral</option>
+                        <option value="Abdominal">Abdominal</option>
+                        <option value="Aquecimento">Aquecimento</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Ombros">Ombros</option>
+                        <option value="Glúteos">Glúteos</option>
+                        <option value="Tríceps">Tríceps</option>
+                        <option value="Bíceps">Bíceps</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <input type="text" id="custom-muscle-type" placeholder="Ex: Antebraço" class="hidden">
+
+                    <label for="num-series">Número de Séries:</label>
+                    <input type="number" id="num-series" min="1" value="3" required>
+
+                    <label for="repetitions">Repetições por Série:</label>
+                    <input type="text" id="repetitions" placeholder="Ex: 10-12 ou 10" required>
+
+                    <label for="rest-time">Tempo de Descanso (segundos):</label>
+                    <input type="number" id="rest-time" min="0" value="90" required>
+
+                    <button type="submit" class="save-btn">Salvar Treino</button>
+                    <button type="button" id="cancel-add-edit" class="cancel-btn">Cancelar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="workout-execution-view" class="hidden">
+            <h2 id="executing-workout-title">Treino em Andamento</h2>
+            <div class="workout-display">
+                <div class="gif-placeholder">
+                    <img id="exercise-gif" src="assets/gifs/placeholder.gif" alt="GIF do Exercício">
+                </div>
+                <h3 id="current-exercise-name"></h3>
+                <p class="series-reps"><span id="current-series">SÉRIE 1</span> - <span id="current-repetitions">10 REPETIÇÕES</span></p>
+                <div id="rest-timer-container" class="hidden">
+                    <p>Descanso:</p>
+                    <p id="rest-timer" class="timer">00:00</p>
+                </div>
+                <button id="complete-series-btn" class="action-btn">Concluir Série</button>
+                <div class="navigation-btns">
+                    <button id="prev-exercise-btn" class="nav-btn">&lt; Anterior</button>
+                    <button id="next-exercise-btn" class="nav-btn">Próximo &gt;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/dataHandler.js"></script>
+    <script src="js/workoutRunner.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #4CAF50; /* Verde */
+    --secondary-color: #FFC107; /* Amarelo */
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --hover-color: #45a049;
+    --active-tab-color: #388E3C;
+    --completed-day-color: #A5D6A7; /* Verde claro para dias concluídos */
+    --error-color: #f44336; /* Vermelho */
+    --success-color: #8BC34A; /* Verde para sucesso */
+}
+
+/* Base */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Sidebar (Navegação) */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+.day-tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.day-tabs li {
+    margin-bottom: 0.5rem;
+}
+
+.day-tabs button {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.day-tabs button:hover {
+    background-color: var(--background-color);
+    border-left-color: var(--primary-color);
+}
+
+.day-tabs button.active {
+    background-color: var(--active-tab-color);
+    color: white;
+    border-left-color: var(--primary-color);
+}
+
+.day-tabs button.completed {
+    background-color: var(--completed-day-color);
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Main Content Area */
+.content-area {
+    margin-left: 250px; /* Offset for sidebar */
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.active-view {
+    display: block;
+}
+
+/* Dashboard View */
+#dashboard-view {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+/* Workout Day View */
+#workout-day-view h2, #workout-execution-view h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.workout-list-container, .workout-display, .form-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+.workout-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.workout-list li {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workout-info {
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+
+.workout-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.workout-actions button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.workout-actions button:hover {
+    background-color: #e6b000;
+}
+
+.workout-actions .delete-btn {
+    background-color: var(--error-color);
+}
+
+.workout-actions .delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Buttons */
+.add-btn, .start-btn, .save-btn, .cancel-btn, .action-btn, .nav-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn, .save-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.add-btn:hover, .save-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.start-btn, .action-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    margin-left: 1rem;
+}
+
+.start-btn:hover, .action-btn:hover {
+    background-color: #e6b000;
+}
+
+.cancel-btn {
+    background-color: #9E9E9E;
+    color: white;
+    margin-left: 1rem;
+}
+
+.cancel-btn:hover {
+    background-color: #757575;
+}
+
+/* Forms */
+.form-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--light-text-color);
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="number"]:focus,
+.form-container select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Workout Execution View */
+.workout-display {
+    text-align: center;
+}
+
+.gif-placeholder {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    background-color: #eee;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 8px;
+    overflow: hidden; /* Ensure GIF fits */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.gif-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure GIF is scaled properly */
+}
+
+#current-exercise-name {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.series-reps {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+#rest-timer-container {
+    background-color: #ffe0b2; /* Laranja claro */
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1.5rem auto;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#rest-timer-container p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+#rest-timer {
+    font-size: 2.5rem;
+    color: #e65100; /* Laranja escuro */
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navigation-btns {
+    margin-top: 2rem;
+}
+
+.navigation-btns .nav-btn {
+    background-color: #B0BEC5; /* Cinza */
+    color: white;
+    margin: 0 0.5rem;
+}
+
+.navigation-btns .nav-btn:hover {
+    background-color: #78909C;
+}
+
+/* Messages */
+.message {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.error-message {
+    background-color: var(--error-color);
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .day-tabs {
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling for tabs */
+        white-space: nowrap; /* Prevent tabs from wrapping */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .day-tabs li {
+        flex: 0 0 auto; /* Prevent stretching */
+        margin-right: 5px; /* Space between tabs */
+        margin-bottom: 0;
+    }
+
+    .day-tabs button {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        border-left: none; /* Remove left border */
+        border-bottom: 3px solid transparent; /* Use bottom border for active state */
+    }
+
+    .day-tabs button.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary-color); /* Active bottom border */
+    }
+
+    .day-tabs button:hover {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary-color); /* Hover bottom border */
+    }
+
+    .content-area {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .workout-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .workout-info {
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .workout-actions {
+        width: 100%;
+        text-align: right;
+    }
+
+    .workout-actions button {
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .start-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-btn, .save-btn, .cancel-btn, .start-btn, .action-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container select {
+        width: calc(100% - 20px); /* Adjust for smaller screens */
+    }
+
+    .navigation-btns button {
+        width: 48%;
+        margin: 0.5rem 1%;
+    }
+}
